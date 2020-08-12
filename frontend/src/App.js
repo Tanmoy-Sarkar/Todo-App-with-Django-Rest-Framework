@@ -4,6 +4,7 @@ import Todos from './components/Todos'
 import Header from './components/layout/Header'
 import AddTodo from './components/addtodo'
 import About from './components/pages/about'
+
 import {v4 as uuid} from "uuid";
 import axios from 'axios'
 import './App.css';
@@ -25,11 +26,11 @@ class App extends Component {
     })});
   }
   deleteTodo = (id) => {
-    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    axios.delete(`http://127.0.0.1:8000/api/${id}`)
     .then(res =>    this.setState({todos:[...this.state.todos.filter(todo => todo.id !==id)]}));
   }
   addTodo = (title) => {
-    axios.post('https://jsonplaceholder.typicode.com/todos',{
+    axios.post('http://127.0.0.1:8000/api/',{
       title,
       completed:false
     })
